@@ -1,0 +1,474 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		598D4C701742F4C20014A28A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C6F1742F4C20014A28A /* UIKit.framework */; };
+		598D4C721742F4C20014A28A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C711742F4C20014A28A /* Foundation.framework */; };
+		598D4C741742F4C20014A28A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C731742F4C20014A28A /* CoreGraphics.framework */; };
+		598D4C761742F4C20014A28A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C751742F4C20014A28A /* CoreData.framework */; };
+		598D4C7C1742F4C20014A28A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C7A1742F4C20014A28A /* InfoPlist.strings */; };
+		598D4C7E1742F4C20014A28A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4C7D1742F4C20014A28A /* main.m */; };
+		598D4C821742F4C20014A28A /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4C811742F4C20014A28A /* SLAppDelegate.m */; };
+		598D4C841742F4C20014A28A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C831742F4C20014A28A /* Default.png */; };
+		598D4C861742F4C20014A28A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C851742F4C20014A28A /* Default@2x.png */; };
+		598D4C881742F4C20014A28A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C871742F4C20014A28A /* Default-568h@2x.png */; };
+		598D4C8B1742F4C20014A28A /* BartO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 598D4C891742F4C20014A28A /* BartO.xcdatamodeld */; };
+		598D4C931742F4C20014A28A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C921742F4C20014A28A /* SenTestingKit.framework */; };
+		598D4C941742F4C20014A28A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C6F1742F4C20014A28A /* UIKit.framework */; };
+		598D4C951742F4C20014A28A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C711742F4C20014A28A /* Foundation.framework */; };
+		598D4C961742F4C20014A28A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C751742F4C20014A28A /* CoreData.framework */; };
+		598D4C9E1742F4C20014A28A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C9C1742F4C20014A28A /* InfoPlist.strings */; };
+		598D4CA11742F4C20014A28A /* BartOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4CA01742F4C20014A28A /* BartOTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		598D4C971742F4C20014A28A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 598D4C641742F4C20014A28A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 598D4C6B1742F4C20014A28A;
+			remoteInfo = BartO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		598D4C6C1742F4C20014A28A /* BartO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BartO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		598D4C6F1742F4C20014A28A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		598D4C711742F4C20014A28A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		598D4C731742F4C20014A28A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		598D4C751742F4C20014A28A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		598D4C791742F4C20014A28A /* BartO-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BartO-Info.plist"; sourceTree = "<group>"; };
+		598D4C7B1742F4C20014A28A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		598D4C7D1742F4C20014A28A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		598D4C7F1742F4C20014A28A /* BartO-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BartO-Prefix.pch"; sourceTree = "<group>"; };
+		598D4C801742F4C20014A28A /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
+		598D4C811742F4C20014A28A /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		598D4C831742F4C20014A28A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		598D4C851742F4C20014A28A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		598D4C871742F4C20014A28A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		598D4C8A1742F4C20014A28A /* BartO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BartO.xcdatamodel; sourceTree = "<group>"; };
+		598D4C911742F4C20014A28A /* BartOTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BartOTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		598D4C921742F4C20014A28A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		598D4C9B1742F4C20014A28A /* BartOTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BartOTests-Info.plist"; sourceTree = "<group>"; };
+		598D4C9D1742F4C20014A28A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		598D4C9F1742F4C20014A28A /* BartOTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BartOTests.h; sourceTree = "<group>"; };
+		598D4CA01742F4C20014A28A /* BartOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BartOTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		598D4C691742F4C20014A28A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598D4C701742F4C20014A28A /* UIKit.framework in Frameworks */,
+				598D4C721742F4C20014A28A /* Foundation.framework in Frameworks */,
+				598D4C741742F4C20014A28A /* CoreGraphics.framework in Frameworks */,
+				598D4C761742F4C20014A28A /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598D4C8D1742F4C20014A28A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598D4C931742F4C20014A28A /* SenTestingKit.framework in Frameworks */,
+				598D4C941742F4C20014A28A /* UIKit.framework in Frameworks */,
+				598D4C951742F4C20014A28A /* Foundation.framework in Frameworks */,
+				598D4C961742F4C20014A28A /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		598D4C631742F4C20014A28A = {
+			isa = PBXGroup;
+			children = (
+				598D4C771742F4C20014A28A /* BartO */,
+				598D4C991742F4C20014A28A /* BartOTests */,
+				598D4C6E1742F4C20014A28A /* Frameworks */,
+				598D4C6D1742F4C20014A28A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		598D4C6D1742F4C20014A28A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C6C1742F4C20014A28A /* BartO.app */,
+				598D4C911742F4C20014A28A /* BartOTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		598D4C6E1742F4C20014A28A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C6F1742F4C20014A28A /* UIKit.framework */,
+				598D4C711742F4C20014A28A /* Foundation.framework */,
+				598D4C731742F4C20014A28A /* CoreGraphics.framework */,
+				598D4C751742F4C20014A28A /* CoreData.framework */,
+				598D4C921742F4C20014A28A /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		598D4C771742F4C20014A28A /* BartO */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C801742F4C20014A28A /* SLAppDelegate.h */,
+				598D4C811742F4C20014A28A /* SLAppDelegate.m */,
+				598D4C891742F4C20014A28A /* BartO.xcdatamodeld */,
+				598D4C781742F4C20014A28A /* Supporting Files */,
+			);
+			path = BartO;
+			sourceTree = "<group>";
+		};
+		598D4C781742F4C20014A28A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C791742F4C20014A28A /* BartO-Info.plist */,
+				598D4C7A1742F4C20014A28A /* InfoPlist.strings */,
+				598D4C7D1742F4C20014A28A /* main.m */,
+				598D4C7F1742F4C20014A28A /* BartO-Prefix.pch */,
+				598D4C831742F4C20014A28A /* Default.png */,
+				598D4C851742F4C20014A28A /* Default@2x.png */,
+				598D4C871742F4C20014A28A /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		598D4C991742F4C20014A28A /* BartOTests */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C9F1742F4C20014A28A /* BartOTests.h */,
+				598D4CA01742F4C20014A28A /* BartOTests.m */,
+				598D4C9A1742F4C20014A28A /* Supporting Files */,
+			);
+			path = BartOTests;
+			sourceTree = "<group>";
+		};
+		598D4C9A1742F4C20014A28A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C9B1742F4C20014A28A /* BartOTests-Info.plist */,
+				598D4C9C1742F4C20014A28A /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		598D4C6B1742F4C20014A28A /* BartO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598D4CA41742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartO" */;
+			buildPhases = (
+				598D4C681742F4C20014A28A /* Sources */,
+				598D4C691742F4C20014A28A /* Frameworks */,
+				598D4C6A1742F4C20014A28A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BartO;
+			productName = BartO;
+			productReference = 598D4C6C1742F4C20014A28A /* BartO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		598D4C901742F4C20014A28A /* BartOTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartOTests" */;
+			buildPhases = (
+				598D4C8C1742F4C20014A28A /* Sources */,
+				598D4C8D1742F4C20014A28A /* Frameworks */,
+				598D4C8E1742F4C20014A28A /* Resources */,
+				598D4C8F1742F4C20014A28A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				598D4C981742F4C20014A28A /* PBXTargetDependency */,
+			);
+			name = BartOTests;
+			productName = BartOTests;
+			productReference = 598D4C911742F4C20014A28A /* BartOTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		598D4C641742F4C20014A28A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SL;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Sakun Labs";
+			};
+			buildConfigurationList = 598D4C671742F4C20014A28A /* Build configuration list for PBXProject "BartO" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 598D4C631742F4C20014A28A;
+			productRefGroup = 598D4C6D1742F4C20014A28A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				598D4C6B1742F4C20014A28A /* BartO */,
+				598D4C901742F4C20014A28A /* BartOTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		598D4C6A1742F4C20014A28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598D4C7C1742F4C20014A28A /* InfoPlist.strings in Resources */,
+				598D4C841742F4C20014A28A /* Default.png in Resources */,
+				598D4C861742F4C20014A28A /* Default@2x.png in Resources */,
+				598D4C881742F4C20014A28A /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598D4C8E1742F4C20014A28A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598D4C9E1742F4C20014A28A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		598D4C8F1742F4C20014A28A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		598D4C681742F4C20014A28A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598D4C7E1742F4C20014A28A /* main.m in Sources */,
+				598D4C821742F4C20014A28A /* SLAppDelegate.m in Sources */,
+				598D4C8B1742F4C20014A28A /* BartO.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		598D4C8C1742F4C20014A28A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				598D4CA11742F4C20014A28A /* BartOTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		598D4C981742F4C20014A28A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 598D4C6B1742F4C20014A28A /* BartO */;
+			targetProxy = 598D4C971742F4C20014A28A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		598D4C7A1742F4C20014A28A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				598D4C7B1742F4C20014A28A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		598D4C9C1742F4C20014A28A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				598D4C9D1742F4C20014A28A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		598D4CA21742F4C20014A28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		598D4CA31742F4C20014A28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		598D4CA51742F4C20014A28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
+				INFOPLIST_FILE = "BartO/BartO-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		598D4CA61742F4C20014A28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
+				INFOPLIST_FILE = "BartO/BartO-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		598D4CA81742F4C20014A28A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BartO.app/BartO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
+				INFOPLIST_FILE = "BartOTests/BartOTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		598D4CA91742F4C20014A28A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BartO.app/BartO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
+				INFOPLIST_FILE = "BartOTests/BartOTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		598D4C671742F4C20014A28A /* Build configuration list for PBXProject "BartO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598D4CA21742F4C20014A28A /* Debug */,
+				598D4CA31742F4C20014A28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		598D4CA41742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598D4CA51742F4C20014A28A /* Debug */,
+				598D4CA61742F4C20014A28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartOTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				598D4CA81742F4C20014A28A /* Debug */,
+				598D4CA91742F4C20014A28A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		598D4C891742F4C20014A28A /* BartO.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				598D4C8A1742F4C20014A28A /* BartO.xcdatamodel */,
+			);
+			currentVersion = 598D4C8A1742F4C20014A28A /* BartO.xcdatamodel */;
+			path = BartO.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 598D4C641742F4C20014A28A /* Project object */;
+}
