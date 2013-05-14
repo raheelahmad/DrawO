@@ -24,6 +24,7 @@
 		598D4C961742F4C20014A28A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C751742F4C20014A28A /* CoreData.framework */; };
 		598D4C9E1742F4C20014A28A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C9C1742F4C20014A28A /* InfoPlist.strings */; };
 		598D4CA11742F4C20014A28A /* BartOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4CA01742F4C20014A28A /* BartOTests.m */; };
+		598D4CAE1742F5400014A28A /* SLMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4CAD1742F5400014A28A /* SLMainVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		598D4C9D1742F4C20014A28A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		598D4C9F1742F4C20014A28A /* BartOTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BartOTests.h; sourceTree = "<group>"; };
 		598D4CA01742F4C20014A28A /* BartOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BartOTests.m; sourceTree = "<group>"; };
+		598D4CAC1742F5400014A28A /* SLMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMainVC.h; sourceTree = "<group>"; };
+		598D4CAD1742F5400014A28A /* SLMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMainVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +123,7 @@
 		598D4C771742F4C20014A28A /* BartO */ = {
 			isa = PBXGroup;
 			children = (
-				598D4C801742F4C20014A28A /* SLAppDelegate.h */,
-				598D4C811742F4C20014A28A /* SLAppDelegate.m */,
+				598D4CAA1742F4CF0014A28A /* Classes */,
 				598D4C891742F4C20014A28A /* BartO.xcdatamodeld */,
 				598D4C781742F4C20014A28A /* Supporting Files */,
 			);
@@ -159,6 +161,17 @@
 				598D4C9C1742F4C20014A28A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		598D4CAA1742F4CF0014A28A /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				598D4C801742F4C20014A28A /* SLAppDelegate.h */,
+				598D4C811742F4C20014A28A /* SLAppDelegate.m */,
+				598D4CAC1742F5400014A28A /* SLMainVC.h */,
+				598D4CAD1742F5400014A28A /* SLMainVC.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +287,7 @@
 				598D4C7E1742F4C20014A28A /* main.m in Sources */,
 				598D4C821742F4C20014A28A /* SLAppDelegate.m in Sources */,
 				598D4C8B1742F4C20014A28A /* BartO.xcdatamodeld in Sources */,
+				598D4CAE1742F5400014A28A /* SLMainVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
