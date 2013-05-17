@@ -7,6 +7,11 @@
 //
 
 #import "SLAppDelegate.h"
+#import "SLMainVC.h"
+
+@interface SLAppDelegate ()
+@property (nonatomic, strong) SLMainVC *mainVC;
+@end
 
 @implementation SLAppDelegate
 
@@ -19,6 +24,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+	self.mainVC = [[SLMainVC alloc] initWithNibName:nil bundle:nil];
+	self.window.rootViewController = self.mainVC;
     [self.window makeKeyAndVisible];
     return YES;
 }

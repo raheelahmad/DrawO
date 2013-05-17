@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		592E7E851744AA5400CF6CEE /* iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E7F1744AA5400CF6CEE /* iPad@2x.png */; };
+		592E7E861744AA5400CF6CEE /*  AppStore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E801744AA5400CF6CEE /*  AppStore@2x.png */; };
+		592E7E871744AA5400CF6CEE /*  AppStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E811744AA5400CF6CEE /*  AppStore.png */; };
+		592E7E891744AA5400CF6CEE /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E831744AA5400CF6CEE /* iPad.png */; };
+		592E7E8C1744AA9800CF6CEE /* iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E8B1744AA9800CF6CEE /* iPhone.png */; };
+		592E7E8E1744AAAB00CF6CEE /* iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E8D1744AAAB00CF6CEE /* iPhone@2x.png */; };
 		598D4C701742F4C20014A28A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C6F1742F4C20014A28A /* UIKit.framework */; };
 		598D4C721742F4C20014A28A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C711742F4C20014A28A /* Foundation.framework */; };
 		598D4C741742F4C20014A28A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 598D4C731742F4C20014A28A /* CoreGraphics.framework */; };
@@ -25,6 +31,7 @@
 		598D4C9E1742F4C20014A28A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 598D4C9C1742F4C20014A28A /* InfoPlist.strings */; };
 		598D4CA11742F4C20014A28A /* BartOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4CA01742F4C20014A28A /* BartOTests.m */; };
 		598D4CAE1742F5400014A28A /* SLMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4CAD1742F5400014A28A /* SLMainVC.m */; };
+		598D4CB21742F6FF0014A28A /* SLBartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 598D4CB11742F6FF0014A28A /* SLBartView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		592E7E7F1744AA5400CF6CEE /* iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad@2x.png"; sourceTree = "<group>"; };
+		592E7E801744AA5400CF6CEE /*  AppStore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " AppStore@2x.png"; sourceTree = "<group>"; };
+		592E7E811744AA5400CF6CEE /*  AppStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " AppStore.png"; sourceTree = "<group>"; };
+		592E7E831744AA5400CF6CEE /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad.png; sourceTree = "<group>"; };
+		592E7E8B1744AA9800CF6CEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone.png; path = ../iPhone.png; sourceTree = "<group>"; };
+		592E7E8D1744AAAB00CF6CEE /* iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone@2x.png"; path = "../iPhone@2x.png"; sourceTree = "<group>"; };
 		598D4C6C1742F4C20014A28A /* BartO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BartO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		598D4C6F1742F4C20014A28A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		598D4C711742F4C20014A28A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +74,8 @@
 		598D4CA01742F4C20014A28A /* BartOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BartOTests.m; sourceTree = "<group>"; };
 		598D4CAC1742F5400014A28A /* SLMainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLMainVC.h; sourceTree = "<group>"; };
 		598D4CAD1742F5400014A28A /* SLMainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLMainVC.m; sourceTree = "<group>"; };
+		598D4CB01742F6FF0014A28A /* SLBartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBartView.h; sourceTree = "<group>"; };
+		598D4CB11742F6FF0014A28A /* SLBartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBartView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +104,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		592E7E8A1744AA5B00CF6CEE /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				592E7E8B1744AA9800CF6CEE /* iPhone.png */,
+				592E7E8D1744AAAB00CF6CEE /* iPhone@2x.png */,
+				592E7E7F1744AA5400CF6CEE /* iPad@2x.png */,
+				592E7E801744AA5400CF6CEE /*  AppStore@2x.png */,
+				592E7E811744AA5400CF6CEE /*  AppStore.png */,
+				592E7E831744AA5400CF6CEE /* iPad.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 		598D4C631742F4C20014A28A = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +161,7 @@
 		598D4C781742F4C20014A28A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				592E7E8A1744AA5B00CF6CEE /* icons */,
 				598D4C791742F4C20014A28A /* BartO-Info.plist */,
 				598D4C7A1742F4C20014A28A /* InfoPlist.strings */,
 				598D4C7D1742F4C20014A28A /* main.m */,
@@ -166,12 +195,22 @@
 		598D4CAA1742F4CF0014A28A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				598D4CAF1742F6ED0014A28A /* Views */,
 				598D4C801742F4C20014A28A /* SLAppDelegate.h */,
 				598D4C811742F4C20014A28A /* SLAppDelegate.m */,
 				598D4CAC1742F5400014A28A /* SLMainVC.h */,
 				598D4CAD1742F5400014A28A /* SLMainVC.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		598D4CAF1742F6ED0014A28A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				598D4CB01742F6FF0014A28A /* SLBartView.h */,
+				598D4CB11742F6FF0014A28A /* SLBartView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +289,12 @@
 				598D4C841742F4C20014A28A /* Default.png in Resources */,
 				598D4C861742F4C20014A28A /* Default@2x.png in Resources */,
 				598D4C881742F4C20014A28A /* Default-568h@2x.png in Resources */,
+				592E7E851744AA5400CF6CEE /* iPad@2x.png in Resources */,
+				592E7E861744AA5400CF6CEE /*  AppStore@2x.png in Resources */,
+				592E7E871744AA5400CF6CEE /*  AppStore.png in Resources */,
+				592E7E891744AA5400CF6CEE /* iPad.png in Resources */,
+				592E7E8C1744AA9800CF6CEE /* iPhone.png in Resources */,
+				592E7E8E1744AAAB00CF6CEE /* iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +333,7 @@
 				598D4C821742F4C20014A28A /* SLAppDelegate.m in Sources */,
 				598D4C8B1742F4C20014A28A /* BartO.xcdatamodeld in Sources */,
 				598D4CAE1742F5400014A28A /* SLMainVC.m in Sources */,
+				598D4CB21742F6FF0014A28A /* SLBartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +506,7 @@
 				598D4CA61742F4C20014A28A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartOTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +515,7 @@
 				598D4CA91742F4C20014A28A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

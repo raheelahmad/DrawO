@@ -7,12 +7,15 @@
 //
 
 #import "SLMainVC.h"
+#import "SLBartView.h"
 
 @interface SLMainVC ()
 
 @end
 
 @implementation SLMainVC
+
+#pragma - mark UIViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,10 +26,17 @@
     return self;
 }
 
+- (void)loadView {
+	[super loadView];
+	
+	SLBartView *bartView = [[SLBartView alloc] initWithFrame:self.view.bounds];
+	[self.view addSubview:bartView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
