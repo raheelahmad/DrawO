@@ -11,21 +11,59 @@
 #define DEGREES_TO_RADIANS(x) ((x * 3.14) / 180)
 
 const NSUInteger MAX_POINTS = 100;
-const NSUInteger ELLIPSE_WIDTH = 4;
+const NSUInteger ELLIPSE_WIDTH = 2;
+const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 
 @interface SLBartView ()
 @property (nonatomic) BOOL firstTouch;
 @property (nonatomic) BOOL secondTouch;
 @property (nonatomic) BOOL thirdTouch;
+
 @property (nonatomic) CGPoint *allPoints;
 @property (nonatomic) NSUInteger pointsCount;
+
+@property (nonatomic) NSInteger hitIndex;
 @end
 
 @implementation SLBartView
 
+#pragma mark - Hit detection
+
+- (void)detectHit:(CGPoint)touchedPoint {
+	NSUInteger index = 0;
+	
+	BOOL hit = NO;
+	while (index < self.pointsCount) {
+		CGPoint storedPoint = self.allPoints[index];
+		CGFloat distance = distanceBetweenPoints(storedPoint, touchedPoint);
+		if (distance <= MIN_DISTANCE_FOR_HIT) {
+			self.hitIndex = index;
+			hit = YES;
+			break;
+		}
+		index++;
+	}
+	
+	if (!hit)
+		self.hitIndex = -1;
+	
+}
+
+CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
+	CGFloat delta_x = p1.x - p2.x;
+	CGFloat delta_y = p1.y - p2.y;
+	
+	return sqrtf(delta_x * delta_x + delta_y * delta_y);
+}
+
 #pragma mark - Touch handling
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (self.hitIndex >= 0) {
+		[self setNeedsDisplay];
+		self.hitIndex = -1;
+		return;
+	}
 	CGPoint touchedPoint = [self pointForTouches:touches];
 	
 	if (!self.firstTouch) {
@@ -42,6 +80,8 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	CGPoint touchedPoint = [self pointForTouches:touches];
+	[self detectHit:touchedPoint];
+	
 	if (self.firstTouch) {
 		self.secondTouch = YES;
 		CGPoint *pointer = self.allPoints;
@@ -51,7 +91,11 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	CGPoint touchedPoint = [self pointForTouches:touches];
-	if (self.firstTouch && self.secondTouch) {
+	if (self.hitIndex >= 0) {
+		CGPoint *movingPoint = (self.allPoints + self.hitIndex);
+		movingPoint->x = touchedPoint.x;
+		movingPoint->y = touchedPoint.y;
+	} else if (self.firstTouch && self.secondTouch) {
 		if (!self.thirdTouch) {
 			self.pointsCount++;
 		}
@@ -60,8 +104,8 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 		CGPoint *pointer = self.allPoints;
 		pointer[self.pointsCount - 1] = touchedPoint;
 		
-		[self setNeedsDisplay];
 	}
+	[self setNeedsDisplay];
 }
 
 - (CGPoint)pointForTouches:(NSSet *)touches {
@@ -70,6 +114,23 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 }
 
 #pragma mark - Drawing
+
+- (void)drawMarkerAtPoint:(CGPoint)point {
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	[[UIColor whiteColor] setFill];
+	CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH * 1.5, point.y - ELLIPSE_WIDTH * 1.5, ELLIPSE_WIDTH * 3, ELLIPSE_WIDTH * 3));
+	[[UIColor blueColor] setFill];
+	CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH, point.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+}
+
+- (void)printPoints {
+	int index = 0;
+	while (index < self.pointsCount) {
+		CGPoint point = self.allPoints[index];
+		NSLog(@"Point: %@", NSStringFromCGPoint(point));
+		index++;
+	}
+}
 
 - (void)drawRect:(CGRect)rect {
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -85,7 +146,7 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 	CFIndex index = 0;
 	while (index < self.pointsCount) {
 		CGPoint first = self.allPoints[index++];
-		CGContextFillEllipseInRect(context, CGRectMake(first.x - ELLIPSE_WIDTH, first.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+		[self drawMarkerAtPoint:first];
 		if (index + 2 <= self.pointsCount) {
 			UIBezierPath *path = [UIBezierPath bezierPath];
 			CGPoint second = self.allPoints[index++];
@@ -101,19 +162,19 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 			[path addLineToPoint:third];
 			[path stroke];
 			
-			CGContextFillEllipseInRect(context, CGRectMake(second.x - ELLIPSE_WIDTH, second.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
-			CGContextFillEllipseInRect(context, CGRectMake(third.x - ELLIPSE_WIDTH, third.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+			[self drawMarkerAtPoint:second];
+			[self drawMarkerAtPoint:third];
 		} else {
 			break;
 		}
 	}
-	
 }
 
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		self.allPoints = calloc(MAX_POINTS, sizeof(CGPoint));
+		_allPoints = calloc(MAX_POINTS, sizeof(CGPoint));
+		_hitIndex = -1;
 	}
 	return self;
 }
