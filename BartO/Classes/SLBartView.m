@@ -30,9 +30,6 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 	
 	if (!self.firstTouch) {
 		CGPoint *pointer = self.allPoints;
-		if (self.pointsCount > 0) {
-			self.pointsCount++;
-		}
 		pointer[self.pointsCount++] = touchedPoint;
 		self.firstTouch = YES;
 		self.secondTouch = NO;
@@ -40,7 +37,7 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 	} else {
 		self.firstTouch = NO;
 	}
-//	[self setNeedsDisplay]
+	[self setNeedsDisplay];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -55,10 +52,13 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	CGPoint touchedPoint = [self pointForTouches:touches];
 	if (self.firstTouch && self.secondTouch) {
+		if (!self.thirdTouch) {
+			self.pointsCount++;
+		}
 		self.thirdTouch = YES;
 		
 		CGPoint *pointer = self.allPoints;
-		pointer[self.pointsCount] = touchedPoint;
+		pointer[self.pointsCount - 1] = touchedPoint;
 		
 		[self setNeedsDisplay];
 	}
@@ -72,29 +72,39 @@ const NSUInteger ELLIPSE_WIDTH = 4;
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
-	CGContextRef myContext = UIGraphicsGetCurrentContext();
+	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	CGContextSetRGBFillColor(myContext, 0.9f, 0.7f, 0.9f, 1.0f);
-	CGContextFillRect(myContext, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
+	CGFloat pattern[] = {2.0f, 2.0};
 	
-	CGContextSetLineWidth(myContext, 2.0f);
+	CGContextSetRGBFillColor(context, 0.9f, 0.7f, 0.9f, 1.0f);
+	CGContextFillRect(context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
+	
+	CGContextSetLineWidth(context, 2.0f);
 	[[UIColor darkGrayColor] setStroke];
 	[[UIColor blueColor] setFill];
 	CFIndex index = 0;
 	while (index < self.pointsCount) {
-		if (index < self.pointsCount) {
-			CGPoint first = self.allPoints[index];
-			CGContextFillEllipseInRect(myContext, CGRectMake(first.x - ELLIPSE_WIDTH, first.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
-		}
-		
+		CGPoint first = self.allPoints[index++];
+		CGContextFillEllipseInRect(context, CGRectMake(first.x - ELLIPSE_WIDTH, first.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
 		if (index + 2 <= self.pointsCount) {
 			UIBezierPath *path = [UIBezierPath bezierPath];
-			CGPoint first = self.allPoints[index++];
 			CGPoint second = self.allPoints[index++];
 			CGPoint third = self.allPoints[index++];
 			[path moveToPoint:first];
 			[path addQuadCurveToPoint:third controlPoint:second];
 			[path stroke];
+			
+			[path setLineDash:pattern count:2 phase:2];
+			[path moveToPoint:second];
+			[path addLineToPoint:first];
+			[path moveToPoint:second];
+			[path addLineToPoint:third];
+			[path stroke];
+			
+			CGContextFillEllipseInRect(context, CGRectMake(second.x - ELLIPSE_WIDTH, second.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+			CGContextFillEllipseInRect(context, CGRectMake(third.x - ELLIPSE_WIDTH, third.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+		} else {
+			break;
 		}
 	}
 	
