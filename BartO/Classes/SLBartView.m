@@ -18,11 +18,11 @@ const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 @interface SLBartView ()
 
 @property (nonatomic) NSMutableArray *allPoints;
-@property (nonatomic) NSUInteger pointsCount;
 
 @property (nonatomic) CGPoint previousPoint;
 @property (nonatomic) CGPoint controlPoint;
 @property (nonatomic) CGPoint movingPoint;
+@property (nonatomic) SLPoint *hitPoint;
 
 @property (nonatomic) BOOL addingControlPoint;
 @property (nonatomic) BOOL drawing;
@@ -31,7 +31,6 @@ const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 @property (nonatomic, strong) UIBezierPath *bezierPath;
 @property (nonatomic) CGContextRef context;
 
-@property (nonatomic) NSInteger hitIndex;
 @end
 
 @implementation SLBartView
@@ -39,23 +38,13 @@ const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 #pragma mark - Hit detection
 
 - (void)detectHit:(CGPoint)touchedPoint {
-	NSUInteger index = 0;
-	
-	BOOL hit = NO;
-	while (index < self.pointsCount) {
-		SLPoint *storedPoint = self.allPoints[index];
+	for (SLPoint *storedPoint in self.allPoints) {
 		CGFloat distance = distanceBetweenPoints(storedPoint.cgPoint, touchedPoint);
 		if (distance <= MIN_DISTANCE_FOR_HIT) {
-			self.hitIndex = index;
-			hit = YES;
+			self.hitPoint = storedPoint;
 			break;
 		}
-		index++;
 	}
-	
-	if (!hit)
-		self.hitIndex = -1;
-	
 }
 
 CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
@@ -81,7 +70,9 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	}
 	CGPoint point = [self pointForTouches:touches];
 	
-	if (self.addingControlPoint) {
+	if (self.hitPoint) {
+		self.hitPoint = nil;
+	} else if (self.addingControlPoint) {
 		[self addPointToPath:self.previousPoint pointType:REGULAR_POINT_TYPE];
 		[self addPointToPath:self.controlPoint pointType:CONTROL_POINT_TYPE];
 		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
@@ -105,7 +96,11 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	}
 	
 	CGPoint point = [self pointForTouches:touches];
-	if (self.touchHeldDown && !self.addingControlPoint) {
+	
+	if (self.hitPoint) {
+		self.hitPoint.x = point.x;
+		self.hitPoint.y = point.y;
+	} else if (self.touchHeldDown && !self.addingControlPoint) {
 		self.controlPoint = point;
 		self.addingControlPoint = YES;
 	}
@@ -116,7 +111,12 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	CGPoint point = [self pointForTouches:touches];
-	if (!self.drawing) {
+	
+	[self detectHit:point];
+	
+	if (self.hitPoint) {
+		
+	} else if (!self.drawing) {
 		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		[self.bezierPath moveToPoint:point];
 		self.drawing = YES;
@@ -133,11 +133,8 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 }
 
 - (void)printPoints {
-	int index = 0;
-	while (index < self.pointsCount) {
-		SLPoint *point = self.allPoints[index];
+	for (SLPoint *point in self.allPoints) {
 		NSLog(@"Point: %@", point);
-		index++;
 	}
 }
 
@@ -193,8 +190,6 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	self = [super initWithFrame:frame];
 	if (self) {
 		_allPoints = [[NSMutableArray alloc] initWithCapacity:20];
-		_hitIndex = -1;
-		_pointsCount = 0;
 		_bezierPath = [UIBezierPath bezierPath];
 	}
 	return self;
