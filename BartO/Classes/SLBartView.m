@@ -15,12 +15,20 @@ const NSUInteger ELLIPSE_WIDTH = 2;
 const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 
 @interface SLBartView ()
-@property (nonatomic) BOOL firstTouch;
-@property (nonatomic) BOOL secondTouch;
-@property (nonatomic) BOOL thirdTouch;
 
 @property (nonatomic) CGPoint *allPoints;
 @property (nonatomic) NSUInteger pointsCount;
+
+@property (nonatomic) CGPoint previousPoint;
+@property (nonatomic) CGPoint controlPoint;
+@property (nonatomic) CGPoint movingPoint;
+
+@property (nonatomic) BOOL addingControlPoint;
+@property (nonatomic) BOOL drawing;
+@property (nonatomic) BOOL touchHeldDown;
+
+@property (nonatomic, strong) UIBezierPath *bezierPath;
+@property (nonatomic) CGContextRef context;
 
 @property (nonatomic) NSInteger hitIndex;
 @end
@@ -59,52 +67,49 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 #pragma mark - Touch handling
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (self.hitIndex >= 0) {
-		[self setNeedsDisplay];
-		self.hitIndex = -1;
+	if (!self.drawing) {
 		return;
 	}
-	CGPoint touchedPoint = [self pointForTouches:touches];
+	CGPoint point = [self pointForTouches:touches];
 	
-	if (!self.firstTouch) {
-		CGPoint *pointer = self.allPoints;
-		pointer[self.pointsCount++] = touchedPoint;
-		self.firstTouch = YES;
-		self.secondTouch = NO;
-		self.thirdTouch = NO;
+	if (self.addingControlPoint) {
+		[self.bezierPath moveToPoint:self.previousPoint];
+		[self.bezierPath addQuadCurveToPoint:point controlPoint:self.controlPoint];
 	} else {
-		self.firstTouch = NO;
+		[self.bezierPath addLineToPoint:point];
 	}
+	self.previousPoint = point;
+	
+	self.touchHeldDown = NO;
+	self.addingControlPoint = NO;
+	
+	[self setNeedsDisplay];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (!self.drawing) {
+		return;
+	}
+	
+	CGPoint point = [self pointForTouches:touches];
+	if (self.touchHeldDown && !self.addingControlPoint) {
+		self.controlPoint = point;
+		self.addingControlPoint = YES;
+	}
+	self.movingPoint = point;
+	
 	[self setNeedsDisplay];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint touchedPoint = [self pointForTouches:touches];
-	[self detectHit:touchedPoint];
+	CGPoint point = [self pointForTouches:touches];
+	if (!self.drawing) {
+		[self.bezierPath moveToPoint:point];
+		self.drawing = YES;
+		self.previousPoint = point;
+	}
 	
-	if (self.firstTouch) {
-		self.secondTouch = YES;
-		CGPoint *pointer = self.allPoints;
-		pointer[self.pointsCount++] = touchedPoint;
-	}
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	CGPoint touchedPoint = [self pointForTouches:touches];
-	if (self.hitIndex >= 0) {
-		CGPoint *movingPoint = (self.allPoints + self.hitIndex);
-		movingPoint->x = touchedPoint.x;
-		movingPoint->y = touchedPoint.y;
-	} else if (self.firstTouch && self.secondTouch) {
-		if (!self.thirdTouch) {
-			self.pointsCount++;
-		}
-		self.thirdTouch = YES;
-		
-		CGPoint *pointer = self.allPoints;
-		pointer[self.pointsCount - 1] = touchedPoint;
-		
-	}
+	self.touchHeldDown = YES;
 	[self setNeedsDisplay];
 }
 
@@ -115,58 +120,26 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 
 #pragma mark - Drawing
 
-- (void)drawMarkerAtPoint:(CGPoint)point {
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	[[UIColor whiteColor] setFill];
-	CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH * 1.5, point.y - ELLIPSE_WIDTH * 1.5, ELLIPSE_WIDTH * 3, ELLIPSE_WIDTH * 3));
-	[[UIColor blueColor] setFill];
-	CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH, point.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
-}
-
-- (void)printPoints {
-	int index = 0;
-	while (index < self.pointsCount) {
-		CGPoint point = self.allPoints[index];
-		NSLog(@"Point: %@", NSStringFromCGPoint(point));
-		index++;
-	}
-}
-
 - (void)drawRect:(CGRect)rect {
-	CGContextRef context = UIGraphicsGetCurrentContext();
+	if (!self.context)
+		self.context = UIGraphicsGetCurrentContext();
 	
-	CGFloat pattern[] = {2.0f, 2.0};
+	CGContextSetRGBFillColor(self.context, 0.9f, 0.7f, 0.9f, 1.0f);
+	CGContextFillRect(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
 	
-	CGContextSetRGBFillColor(context, 0.9f, 0.7f, 0.9f, 1.0f);
-	CGContextFillRect(context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
-	
-	CGContextSetLineWidth(context, 2.0f);
+	CGContextSetLineWidth(self.context, 1.0f);
 	[[UIColor darkGrayColor] setStroke];
-	[[UIColor blueColor] setFill];
-	CFIndex index = 0;
-	while (index < self.pointsCount) {
-		CGPoint first = self.allPoints[index++];
-		[self drawMarkerAtPoint:first];
-		if (index + 2 <= self.pointsCount) {
-			UIBezierPath *path = [UIBezierPath bezierPath];
-			CGPoint second = self.allPoints[index++];
-			CGPoint third = self.allPoints[index++];
-			[path moveToPoint:first];
-			[path addQuadCurveToPoint:third controlPoint:second];
-			[path stroke];
-			
-			[path setLineDash:pattern count:2 phase:2];
-			[path moveToPoint:second];
-			[path addLineToPoint:first];
-			[path moveToPoint:second];
-			[path addLineToPoint:third];
-			[path stroke];
-			
-			[self drawMarkerAtPoint:second];
-			[self drawMarkerAtPoint:third];
-		} else {
-			break;
-		}
+	[self.bezierPath stroke];
+	
+	if (self.addingControlPoint) {
+		[[UIColor lightGrayColor] setStroke];
+		UIBezierPath *path = [UIBezierPath bezierPath];
+		CGFloat pattern[] = {2.0f, 2.0f};
+		[path setLineDash:pattern count:2 phase:2];
+		
+		[path moveToPoint:self.previousPoint];
+		[path addQuadCurveToPoint:self.movingPoint controlPoint:self.controlPoint];
+		[path stroke];
 	}
 }
 
@@ -175,6 +148,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	if (self) {
 		_allPoints = calloc(MAX_POINTS, sizeof(CGPoint));
 		_hitIndex = -1;
+		_bezierPath = [UIBezierPath bezierPath];
 	}
 	return self;
 }
