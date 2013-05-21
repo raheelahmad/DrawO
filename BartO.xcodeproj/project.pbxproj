@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591CE843174BF79C006DE283 /* SLPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CE842174BF79C006DE283 /* SLPoint.m */; };
 		592E7E851744AA5400CF6CEE /* iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E7F1744AA5400CF6CEE /* iPad@2x.png */; };
 		592E7E861744AA5400CF6CEE /*  AppStore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E801744AA5400CF6CEE /*  AppStore@2x.png */; };
 		592E7E871744AA5400CF6CEE /*  AppStore.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E811744AA5400CF6CEE /*  AppStore.png */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		591CE841174BF79C006DE283 /* SLPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPoint.h; sourceTree = "<group>"; };
+		591CE842174BF79C006DE283 /* SLPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPoint.m; sourceTree = "<group>"; };
 		592E7E7F1744AA5400CF6CEE /* iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad@2x.png"; sourceTree = "<group>"; };
 		592E7E801744AA5400CF6CEE /*  AppStore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " AppStore@2x.png"; sourceTree = "<group>"; };
 		592E7E811744AA5400CF6CEE /*  AppStore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " AppStore.png"; sourceTree = "<group>"; };
@@ -209,6 +212,8 @@
 			children = (
 				598D4CB01742F6FF0014A28A /* SLBartView.h */,
 				598D4CB11742F6FF0014A28A /* SLBartView.m */,
+				591CE841174BF79C006DE283 /* SLPoint.h */,
+				591CE842174BF79C006DE283 /* SLPoint.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				598D4C8B1742F4C20014A28A /* BartO.xcdatamodeld in Sources */,
 				598D4CAE1742F5400014A28A /* SLMainVC.m in Sources */,
 				598D4CB21742F6FF0014A28A /* SLBartView.m in Sources */,
+				591CE843174BF79C006DE283 /* SLPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

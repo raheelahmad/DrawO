@@ -7,6 +7,7 @@
 //
 
 #import "SLBartView.h"
+#import "SLPoint.h"
 
 #define DEGREES_TO_RADIANS(x) ((x * 3.14) / 180)
 
@@ -16,7 +17,7 @@ const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 
 @interface SLBartView ()
 
-@property (nonatomic) CGPoint *allPoints;
+@property (nonatomic) NSMutableArray *allPoints;
 @property (nonatomic) NSUInteger pointsCount;
 
 @property (nonatomic) CGPoint previousPoint;
@@ -42,8 +43,8 @@ const CGFloat MIN_DISTANCE_FOR_HIT = 10;
 	
 	BOOL hit = NO;
 	while (index < self.pointsCount) {
-		CGPoint storedPoint = self.allPoints[index];
-		CGFloat distance = distanceBetweenPoints(storedPoint, touchedPoint);
+		SLPoint *storedPoint = self.allPoints[index];
+		CGFloat distance = distanceBetweenPoints(storedPoint.cgPoint, touchedPoint);
 		if (distance <= MIN_DISTANCE_FOR_HIT) {
 			self.hitIndex = index;
 			hit = YES;
@@ -64,6 +65,14 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	return sqrtf(delta_x * delta_x + delta_y * delta_y);
 }
 
+- (void)addPointToPath:(CGPoint)point pointType:(POINT_TYPE)point_type {
+	SLPoint *newPoint = [[SLPoint alloc] init];
+	newPoint.x = point.x;
+	newPoint.y = point.y;
+	newPoint.pointType = point_type;
+	[self.allPoints addObject:newPoint];
+}
+
 #pragma mark - Touch handling
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -73,9 +82,13 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	CGPoint point = [self pointForTouches:touches];
 	
 	if (self.addingControlPoint) {
+		[self addPointToPath:self.previousPoint pointType:REGULAR_POINT_TYPE];
+		[self addPointToPath:self.controlPoint pointType:CONTROL_POINT_TYPE];
+		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		[self.bezierPath moveToPoint:self.previousPoint];
 		[self.bezierPath addQuadCurveToPoint:point controlPoint:self.controlPoint];
 	} else {
+		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		[self.bezierPath addLineToPoint:point];
 	}
 	self.previousPoint = point;
@@ -104,6 +117,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	CGPoint point = [self pointForTouches:touches];
 	if (!self.drawing) {
+		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		[self.bezierPath moveToPoint:point];
 		self.drawing = YES;
 		self.previousPoint = point;
@@ -118,18 +132,50 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	return [touch locationInView:self];
 }
 
+- (void)printPoints {
+	int index = 0;
+	while (index < self.pointsCount) {
+		SLPoint *point = self.allPoints[index];
+		NSLog(@"Point: %@", point);
+		index++;
+	}
+}
+
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {
 	if (!self.context)
 		self.context = UIGraphicsGetCurrentContext();
 	
-	CGContextSetRGBFillColor(self.context, 0.9f, 0.7f, 0.9f, 1.0f);
-	CGContextFillRect(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
+	[self printPoints];
 	
-	CGContextSetLineWidth(self.context, 1.0f);
+	CGContextSetRGBFillColor(self.context, 0.5f, 0.5f, 0.9f, 1.0f);
+	CGContextFillRect(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
+	[[UIColor yellowColor] setFill];
+	
+	CGContextSetLineWidth(self.context, 2.0f);
 	[[UIColor darkGrayColor] setStroke];
-	[self.bezierPath stroke];
+	UIBezierPath *path = [UIBezierPath bezierPath];
+	for (int index = 1; index < self.allPoints.count; index++) {
+		SLPoint *point = self.allPoints[index];
+		if (point.pointType == CONTROL_POINT_TYPE) {
+			if (index + 1 < self.allPoints.count) { // we can draw a bezier curve
+				SLPoint *next = self.allPoints[index + 1];
+				[path addQuadCurveToPoint:next.cgPoint controlPoint:point.cgPoint];
+				index++; // move one more to move ahead of the next point at the end of this loop run
+				CGContextFillEllipseInRect(self.context, CGRectMake(point.x - ELLIPSE_WIDTH/2, point.y - ELLIPSE_WIDTH/2, ELLIPSE_WIDTH, ELLIPSE_WIDTH));
+			}
+		} else {
+			if (index == 1) {
+				// then move to the first point
+				SLPoint *previous = self.allPoints[0];
+				[path moveToPoint:previous.cgPoint];
+			}
+			
+			[path addLineToPoint:point.cgPoint];
+		}
+	}
+	[path stroke];
 	
 	if (self.addingControlPoint) {
 		[[UIColor lightGrayColor] setStroke];
@@ -146,8 +192,9 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
-		_allPoints = calloc(MAX_POINTS, sizeof(CGPoint));
+		_allPoints = [[NSMutableArray alloc] initWithCapacity:20];
 		_hitIndex = -1;
+		_pointsCount = 0;
 		_bezierPath = [UIBezierPath bezierPath];
 	}
 	return self;
