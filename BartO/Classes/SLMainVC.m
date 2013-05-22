@@ -37,6 +37,9 @@
 	
 	UIButton *undoButton = [self addButtonForImageName:@"undo.png" origin:CGPointMake(60, 20)];
 	[undoButton addTarget:bartView action:@selector(undo) forControlEvents:UIControlEventTouchUpInside];
+	
+	UIButton *startNewButton = [self addButtonForImageName:@"new_path.png" origin:CGPointMake(100, 20)];
+	[startNewButton addTarget:bartView action:@selector(startNewPath) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (UIButton *)addButtonForImageName:(NSString *)imageName origin:(CGPoint)origin {

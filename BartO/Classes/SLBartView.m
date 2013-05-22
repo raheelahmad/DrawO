@@ -14,7 +14,8 @@
 
 @interface SLBartView ()
 
-@property (nonatomic) SLPath *currentPath;
+@property (nonatomic, readonly) SLPath *currentPath;
+@property (nonatomic, strong) NSMutableArray *paths;
 
 @property (nonatomic) CGPoint previousPoint;
 @property (nonatomic) CGPoint controlPoint;
@@ -30,10 +31,26 @@
 
 @implementation SLBartView
 
+#pragma mark - Properties
+
+- (SLPath *)currentPath {
+	if ([self.paths count] > 0) {
+		return [self.paths lastObject];
+	} else {
+		return nil;
+	}
+}
+
 #pragma mark - Public Interface
 
+- (void)startNewPath {
+	SLPath *newPath = [[SLPath alloc] init];
+	[self.paths addObject:newPath];
+	[self setNeedsDisplay];
+}
+
 - (void)clear {
-	self.currentPath = nil;
+	[self.paths removeAllObjects];
 	[self setNeedsDisplay];
 }
 
@@ -45,7 +62,13 @@
 #pragma mark - Hit detection
 
 - (void)detectHit:(CGPoint)touchedPoint {
-	self.hitPoint = [self.currentPath detectHit:touchedPoint];
+	for (SLPath *path in self.paths) {
+		SLPoint *hitPoint = [path detectHit:touchedPoint];
+		if (hitPoint) {
+			self.hitPoint = hitPoint;
+			break;
+		}
+	}
 }
 
 - (void)addPointToPath:(CGPoint)point pointType:(POINT_TYPE)point_type {
@@ -105,7 +128,8 @@
 		
 	} else if (!self.currentPath) {
 		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
-		self.currentPath = [[SLPath alloc] init];
+		SLPath *currentPath = [[SLPath alloc] init];
+		[self.paths addObject:currentPath];
 		self.previousPoint = point;
 	}
 	
@@ -127,11 +151,21 @@
 - (void)drawRect:(CGRect)rect {
 	if (!self.context)
 		self.context = UIGraphicsGetCurrentContext();
+	[self.currentPath printPoints];
 	
+	//Background
 	CGContextSetRGBFillColor(self.context, 0.5f, 0.5f, 0.9f, 1.0f);
 	CGContextFillRect(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
+	
 	[[UIColor yellowColor] setFill];
-	[self.currentPath drawInContext:self.context];
+	for (SLPath *path in self.paths) {
+		if (path == self.currentPath) {
+			[[UIColor darkGrayColor] setStroke];
+		} else {
+			[[UIColor lightGrayColor] setStroke];
+		}
+		[path drawInContext:self.context];
+	}
 	
 	if (self.addingControlPoint) {
 		[[UIColor lightGrayColor] setStroke];
@@ -145,4 +179,11 @@
 	}
 }
 
+- (id)initWithFrame:(CGRect)frame {
+	self = [super initWithFrame:frame];
+	if (self) {
+		_paths = [NSMutableArray arrayWithCapacity:20];
+	}
+	return self;
+}
 @end

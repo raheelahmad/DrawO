@@ -12,5 +12,6 @@
 
 - (void)clear;
 - (void)undo;
+- (void)startNewPath;
 
 @end

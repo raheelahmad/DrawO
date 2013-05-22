@@ -74,7 +74,6 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 }
 
 - (void)drawInContext:(CGContextRef)context {
-	[[UIColor darkGrayColor] setStroke];
 	UIBezierPath *path = [UIBezierPath bezierPath];
 	path.lineWidth = 2.0f;
 	// Draw the main path
