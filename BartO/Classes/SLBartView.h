@@ -10,5 +10,7 @@
 
 @interface SLBartView : UIView
 
+- (void)clear;
+- (void)undo;
 
 @end

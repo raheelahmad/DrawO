@@ -31,6 +31,21 @@
 	
 	SLBartView *bartView = [[SLBartView alloc] initWithFrame:self.view.bounds];
 	[self.view addSubview:bartView];
+	
+	UIButton *trashButton = [self addButtonForImageName:@"trash.png" origin:CGPointMake(20, 20)];
+	[trashButton addTarget:bartView action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
+	
+	UIButton *undoButton = [self addButtonForImageName:@"undo.png" origin:CGPointMake(60, 20)];
+	[undoButton addTarget:bartView action:@selector(undo) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (UIButton *)addButtonForImageName:(NSString *)imageName origin:(CGPoint)origin {
+	UIImage *image = [UIImage imageNamed:imageName];
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+	[button setImage:image forState:UIControlStateNormal];
+	button.frame = CGRectMake(origin.x, origin.y, image.size.width, image.size.height);
+	[self.view addSubview:button];
+	return button;
 }
 
 - (void)viewDidLoad
