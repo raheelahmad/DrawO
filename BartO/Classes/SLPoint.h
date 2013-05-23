@@ -17,5 +17,6 @@ typedef enum {
 @property (nonatomic) CGFloat x;
 @property (nonatomic) CGFloat y;
 @property (nonatomic) POINT_TYPE pointType;
+@property (nonatomic) BOOL touched;
 @property (nonatomic, readonly) CGPoint cgPoint;
 @end

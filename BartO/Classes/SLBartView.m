@@ -84,6 +84,7 @@
 	CGPoint point = [self pointForTouches:touches];
 	
 	if (self.hitPoint) {
+		self.hitPoint.touched = NO;
 		self.hitPoint = nil;
 	} else if (self.addingControlPoint) {
 		[self addPointToPath:self.previousPoint pointType:REGULAR_POINT_TYPE];
@@ -157,7 +158,7 @@
 	CGContextSetRGBFillColor(self.context, 0.5f, 0.5f, 0.9f, 1.0f);
 	CGContextFillRect(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
 	
-	[[UIColor yellowColor] setFill];
+	[[UIColor colorWithWhite:0.7f alpha:0.7f] setFill];
 	for (SLPath *path in self.paths) {
 		if (path == self.currentPath) {
 			[[UIColor darkGrayColor] setStroke];

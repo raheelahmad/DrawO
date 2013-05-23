@@ -10,7 +10,7 @@
 
 const NSUInteger MAX_POINTS = 100;
 const CGFloat MIN_DISTANCE_FOR_HIT = 20;
-const NSUInteger ELLIPSE_WIDTH = 4;
+const NSUInteger ELLIPSE_WIDTH = 8;
 
 @interface SLPath ()
 @property (nonatomic, strong) NSMutableArray *points;
@@ -63,6 +63,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 		CGFloat distance = distanceBetweenPoints(storedPoint.cgPoint, touchedPoint);
 		if (distance <= MIN_DISTANCE_FOR_HIT) {
 			hitPoint = storedPoint;
+			hitPoint.touched = YES;
 			break;
 		}
 	}
@@ -70,6 +71,12 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 }
 
 - (void)drawMarkerAtPoint:(SLPoint *)point context:(CGContextRef)context {
+	if (point.touched) {
+		[[UIColor colorWithWhite:0.3f alpha:0.3f] setFill];
+		CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH, point.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+		
+	}
+	[UIColor colorWithWhite:0.7f alpha:0.7f];
 	CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH/2, point.y - ELLIPSE_WIDTH/2, ELLIPSE_WIDTH, ELLIPSE_WIDTH));
 }
 

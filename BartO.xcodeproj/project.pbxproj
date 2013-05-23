@@ -10,6 +10,7 @@
 		5914682F174D57B40086B68C /* SLPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 5914682E174D57B40086B68C /* SLPath.m */; };
 		59146832174D7D2F0086B68C /* new_path.png in Resources */ = {isa = PBXBuildFile; fileRef = 59146830174D7D2F0086B68C /* new_path.png */; };
 		59146833174D7D2F0086B68C /* new_path@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59146831174D7D2F0086B68C /* new_path@2x.png */; };
+		59146837174D9F280086B68C /* Todo.md in Resources */ = {isa = PBXBuildFile; fileRef = 59146836174D9F280086B68C /* Todo.md */; };
 		591CE843174BF79C006DE283 /* SLPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CE842174BF79C006DE283 /* SLPoint.m */; };
 		592E7E851744AA5400CF6CEE /* iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E7F1744AA5400CF6CEE /* iPad@2x.png */; };
 		592E7E861744AA5400CF6CEE /*  AppStore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E801744AA5400CF6CEE /*  AppStore@2x.png */; };
@@ -57,6 +58,7 @@
 		5914682E174D57B40086B68C /* SLPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPath.m; sourceTree = "<group>"; };
 		59146830174D7D2F0086B68C /* new_path.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_path.png; sourceTree = "<group>"; };
 		59146831174D7D2F0086B68C /* new_path@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_path@2x.png"; sourceTree = "<group>"; };
+		59146836174D9F280086B68C /* Todo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo.md; sourceTree = "<group>"; };
 		591CE841174BF79C006DE283 /* SLPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPoint.h; sourceTree = "<group>"; };
 		591CE842174BF79C006DE283 /* SLPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPoint.m; sourceTree = "<group>"; };
 		592E7E7F1744AA5400CF6CEE /* iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad@2x.png"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				598D4C831742F4C20014A28A /* Default.png */,
 				598D4C851742F4C20014A28A /* Default@2x.png */,
 				598D4C871742F4C20014A28A /* Default-568h@2x.png */,
+				59146836174D9F280086B68C /* Todo.md */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				59B274DA174C6C0400F17C4A /* undo.png in Resources */,
 				59146832174D7D2F0086B68C /* new_path.png in Resources */,
 				59146833174D7D2F0086B68C /* new_path@2x.png in Resources */,
+				59146837174D9F280086B68C /* Todo.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
