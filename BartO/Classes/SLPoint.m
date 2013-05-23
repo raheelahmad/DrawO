@@ -10,6 +10,11 @@
 
 @implementation SLPoint
 
+- (void)moveToPoint:(SLPoint *)point {
+	self.x = point.x;
+	self.y = point.y;
+}
+
 - (CGPoint)cgPoint {
 	return CGPointMake(self.x, self.y);
 }

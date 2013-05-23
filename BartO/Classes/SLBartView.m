@@ -55,7 +55,7 @@
 }
 
 - (void)undo {
-	[self.currentPath undo];
+	[self.undoManager undo];
 	[self setNeedsDisplay];
 }
 
@@ -66,6 +66,9 @@
 		SLPoint *hitPoint = [path detectHit:touchedPoint];
 		if (hitPoint) {
 			self.hitPoint = hitPoint;
+			SLPoint *originalPoint = [[SLPoint alloc] init];
+			originalPoint.x = hitPoint.x; originalPoint.y = hitPoint.y;
+			[self.undoManager registerUndoWithTarget:hitPoint selector:@selector(moveToPoint:) object:originalPoint];
 			break;
 		}
 	}
@@ -73,6 +76,11 @@
 
 - (void)addPointToPath:(CGPoint)point pointType:(POINT_TYPE)point_type {
 	[self.currentPath addPoint:point type:point_type];
+	
+	// only register undo for regular point types
+	if (point_type == REGULAR_POINT_TYPE) {
+		[self.undoManager registerUndoWithTarget:self.currentPath selector:@selector(undo) object:nil];
+	}
 }
 
 #pragma mark - Touch handling
@@ -86,14 +94,15 @@
 	if (self.hitPoint) {
 		self.hitPoint.touched = NO;
 		self.hitPoint = nil;
-	} else if (self.addingControlPoint) {
-		[self addPointToPath:self.previousPoint pointType:REGULAR_POINT_TYPE];
-		[self addPointToPath:self.controlPoint pointType:CONTROL_POINT_TYPE];
-		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 	} else {
-		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
+		if (self.addingControlPoint) {
+			[self addPointToPath:self.controlPoint pointType:CONTROL_POINT_TYPE];
+			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
+		} else {
+			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
+		}
+		self.previousPoint = point;
 	}
-	self.previousPoint = point;
 	
 	self.touchHeldDown = NO;
 	self.addingControlPoint = NO;
@@ -152,7 +161,6 @@
 - (void)drawRect:(CGRect)rect {
 	if (!self.context)
 		self.context = UIGraphicsGetCurrentContext();
-	[self.currentPath printPoints];
 	
 	//Background
 	CGContextSetRGBFillColor(self.context, 0.5f, 0.5f, 0.9f, 1.0f);

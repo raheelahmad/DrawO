@@ -19,4 +19,7 @@ typedef enum {
 @property (nonatomic) POINT_TYPE pointType;
 @property (nonatomic) BOOL touched;
 @property (nonatomic, readonly) CGPoint cgPoint;
+
+- (void)moveToPoint:(SLPoint *)point;
+
 @end
