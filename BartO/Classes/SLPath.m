@@ -14,6 +14,7 @@ const NSUInteger ELLIPSE_WIDTH = 8;
 
 @interface SLPath ()
 @property (nonatomic, strong) NSMutableArray *points;
+@property (nonatomic, strong) NSUndoManager *undoManager;
 @end
 
 @implementation SLPath
@@ -121,6 +122,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	self = [super init];
 	if (self) {
 		_points = [NSMutableArray arrayWithCapacity:10];
+		_undoManager = [[NSUndoManager alloc] init];
 	}
 	return self;
 }
