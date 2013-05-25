@@ -137,9 +137,9 @@
 	if (self.hitPoint) {
 		
 	} else if (!self.currentPath) {
-		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		SLPath *currentPath = [[SLPath alloc] init];
 		[self.paths addObject:currentPath];
+		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		self.previousPoint = point;
 	}
 	

@@ -109,6 +109,12 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	}
 	[path stroke];
 	
+	[[UIColor lightGrayColor] setStroke];
+//	for (int index = 1; index < self.points.count; index++) {
+//		SLPoint *point = self.points[index];
+//		if (point.pointType == CONTROL_POINT_TYPE) {
+//		SLPoint *previous = 
+//	}
 }
 
 - (void)printPoints {
