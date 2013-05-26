@@ -59,7 +59,8 @@
 	self.controlPoint = nil;
 	self.touchHeldDown = NO;
 	self.hitPoint = nil;
-	
+	self.movingPoint = nil;
+	self.previousPoint = nil;
 }
 
 #pragma mark - Hit detection
@@ -98,6 +99,9 @@
 		self.hitPoint = nil;
 	} else {
 		if (self.controlPoint) {
+			if (!self.previousPoint) {
+				
+			}
 			[self addPointToPath:self.controlPoint.cgPoint pointType:CONTROL_POINT_TYPE];
 			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		} else {
@@ -140,7 +144,6 @@
 	} else if (!self.currentPath) {
 		SLPath *currentPath = [[SLPath alloc] init];
 		[self.paths addObject:currentPath];
-		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		self.previousPoint = [SLPoint pointWithCGPoint:point];
 	}
 	
