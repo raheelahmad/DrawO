@@ -169,14 +169,10 @@
 	
 	[[UIColor colorWithWhite:0.7f alpha:0.7f] setFill];
 	for (SLPath *path in self.paths) {
-		if (path == self.currentPath) {
-			[[UIColor darkGrayColor] setStroke];
-		} else {
-			[[UIColor lightGrayColor] setStroke];
-		}
 		[path drawInContext:self.context];
 	}
 	
+	// draw the curve for the currently drawing curve
 	if (self.controlPoint) {
 		[[UIColor lightGrayColor] setStroke];
 		UIBezierPath *path = [UIBezierPath bezierPath];

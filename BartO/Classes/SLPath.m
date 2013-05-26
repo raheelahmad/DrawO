@@ -79,8 +79,12 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 }
 
 - (void)drawInContext:(CGContextRef)context {
+	
+	// draw the guide lines (for curve tangents) first, so they are below in z.
 	UIBezierPath *path = [UIBezierPath bezierPath];
 	path.lineWidth = 1.0f;
+	CGFloat pattern[] = {4.0f, 2.0f};
+	[path setLineDash:pattern count:2 phase:2];
 	[[UIColor lightGrayColor] setStroke];
 	for (int index = 1; index < self.points.count; index++) {
 		SLPoint *point = self.points[index];
@@ -97,6 +101,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	
 	path = [UIBezierPath bezierPath];
 	path.lineWidth = 2.0f;
+	[[UIColor darkGrayColor] setStroke];
 	// Draw the main path
 	for (int index = 1; index < self.points.count; index++) {
 		SLPoint *point = self.points[index];
