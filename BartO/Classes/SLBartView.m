@@ -17,9 +17,9 @@
 @property (nonatomic, readonly) SLPath *currentPath;
 @property (nonatomic, strong) NSMutableArray *paths;
 
-@property (nonatomic) CGPoint previousPoint;
+@property (nonatomic) SLPoint *previousPoint;
 @property (nonatomic) SLPoint *controlPoint;
-@property (nonatomic) CGPoint movingPoint;
+@property (nonatomic) SLPoint *movingPoint;
 @property (nonatomic) SLPoint *hitPoint;
 
 @property (nonatomic) BOOL touchHeldDown;
@@ -103,7 +103,7 @@
 		} else {
 			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		}
-		self.previousPoint = point;
+		self.previousPoint = [SLPoint pointWithCGPoint:point];
 	}
 	
 	self.touchHeldDown = NO;
@@ -125,7 +125,7 @@
 	} else if (self.touchHeldDown && !self.controlPoint) {
 		self.controlPoint = [SLPoint pointWithCGPoint:point];
 	}
-	self.movingPoint = point;
+	self.movingPoint = [SLPoint pointWithCGPoint:point];
 	
 	[self setNeedsDisplay];
 }
@@ -141,7 +141,7 @@
 		SLPath *currentPath = [[SLPath alloc] init];
 		[self.paths addObject:currentPath];
 		[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
-		self.previousPoint = point;
+		self.previousPoint = [SLPoint pointWithCGPoint:point];
 	}
 	
 	self.touchHeldDown = YES;
@@ -183,8 +183,8 @@
 		CGFloat pattern[] = {4.0f, 2.0f};
 		[path setLineDash:pattern count:2 phase:2];
 		
-		[path moveToPoint:self.previousPoint];
-		[path addQuadCurveToPoint:self.movingPoint controlPoint:self.controlPoint.cgPoint];
+		[path moveToPoint:self.previousPoint.cgPoint];
+		[path addQuadCurveToPoint:self.movingPoint.cgPoint controlPoint:self.controlPoint.cgPoint];
 		[path stroke];
 	}
 }
