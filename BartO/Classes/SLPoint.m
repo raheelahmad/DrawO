@@ -10,6 +10,18 @@
 
 @implementation SLPoint
 
++ (SLPoint *)pointWithX:(CGFloat)x y:(CGFloat)y {
+	SLPoint *point = [[SLPoint alloc] init];
+	point.x = x;
+	point.y = y;
+	
+	return point;
+}
+
++ (SLPoint *)pointWithCGPoint:(CGPoint)cgPoint {
+	return [self pointWithX:cgPoint.x y:cgPoint.y];
+}
+
 - (void)moveToPoint:(SLPoint *)point {
 	self.x = point.x;
 	self.y = point.y;

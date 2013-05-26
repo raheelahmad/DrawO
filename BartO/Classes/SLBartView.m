@@ -34,16 +34,13 @@
 #pragma mark - Properties
 
 - (SLPath *)currentPath {
-	if ([self.paths count] > 0) {
-		return [self.paths lastObject];
-	} else {
-		return nil;
-	}
+	return [self.paths lastObject];
 }
 
 #pragma mark - Public Interface
 
 - (void)startNewPath {
+	[self resetPathStates];
 	SLPath *newPath = [[SLPath alloc] init];
 	[self.paths addObject:newPath];
 	[self setNeedsDisplay];
@@ -59,6 +56,13 @@
 	[self setNeedsDisplay];
 }
 
+- (void)resetPathStates {
+	self.addingControlPoint = NO;
+	self.touchHeldDown = NO;
+	self.hitPoint = nil;
+	
+}
+
 #pragma mark - Hit detection
 
 - (void)detectHit:(CGPoint)touchedPoint {
@@ -66,8 +70,7 @@
 		SLPoint *hitPoint = [path detectHit:touchedPoint];
 		if (hitPoint) {
 			self.hitPoint = hitPoint;
-			SLPoint *originalPoint = [[SLPoint alloc] init];
-			originalPoint.x = hitPoint.x; originalPoint.y = hitPoint.y;
+			SLPoint *originalPoint = [SLPoint pointWithX:hitPoint.x y:hitPoint.y];
 			[self.undoManager registerUndoWithTarget:hitPoint selector:@selector(moveToPoint:) object:originalPoint];
 			break;
 		}

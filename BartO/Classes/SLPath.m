@@ -50,9 +50,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 }
 
 - (void)addPoint:(CGPoint)point type:(POINT_TYPE)pointType {
-	SLPoint *newPoint = [[SLPoint alloc] init];
-	newPoint.x = point.x;
-	newPoint.y = point.y;
+	SLPoint *newPoint = [SLPoint pointWithCGPoint:point];
 	newPoint.pointType = pointType;
 	[self.points addObject:newPoint];
 }
@@ -82,6 +80,22 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 
 - (void)drawInContext:(CGContextRef)context {
 	UIBezierPath *path = [UIBezierPath bezierPath];
+	path.lineWidth = 1.0f;
+	[[UIColor lightGrayColor] setStroke];
+	for (int index = 1; index < self.points.count; index++) {
+		SLPoint *point = self.points[index];
+		if (point.pointType == CONTROL_POINT_TYPE && index + 1 < self.points.count) {
+			SLPoint *previous = self.points[index - 1];
+			SLPoint *next = self.points[index + 1];
+			[self drawMarkerAtPoint:point context:context];
+			[path moveToPoint:previous.cgPoint];
+			[path addLineToPoint:point.cgPoint];
+			[path addLineToPoint:next.cgPoint];
+		}
+	}
+	[path stroke];
+	
+	path = [UIBezierPath bezierPath];
 	path.lineWidth = 2.0f;
 	// Draw the main path
 	for (int index = 1; index < self.points.count; index++) {
@@ -91,30 +105,18 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 				SLPoint *next = self.points[index + 1];
 				[path addQuadCurveToPoint:next.cgPoint controlPoint:point.cgPoint];
 				index++; // move one more to move ahead of the next point at the end of this loop run
-				[self drawMarkerAtPoint:point context:context];
-				[self drawMarkerAtPoint:next context:context];
-				[self drawMarkerAtPoint:self.points[index - 1] context:context]; // previous
 			}
 		} else {
 			if (index == 1) {
 				// then move to the first point
 				SLPoint *previous = self.points[0];
 				[path moveToPoint:previous.cgPoint];
-				[self drawMarkerAtPoint:previous context:context];
 			}
 			
 			[path addLineToPoint:point.cgPoint];
-			[self drawMarkerAtPoint:point context:context];
 		}
 	}
 	[path stroke];
-	
-	[[UIColor lightGrayColor] setStroke];
-//	for (int index = 1; index < self.points.count; index++) {
-//		SLPoint *point = self.points[index];
-//		if (point.pointType == CONTROL_POINT_TYPE) {
-//		SLPoint *previous = 
-//	}
 }
 
 - (void)printPoints {

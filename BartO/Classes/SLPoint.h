@@ -20,6 +20,9 @@ typedef enum {
 @property (nonatomic) BOOL touched;
 @property (nonatomic, readonly) CGPoint cgPoint;
 
++ (SLPoint *)pointWithCGPoint:(CGPoint)cgPoint;
++ (SLPoint *)pointWithX:(CGFloat)x y:(CGFloat)y;
+
 - (void)moveToPoint:(SLPoint *)point;
 
 @end
