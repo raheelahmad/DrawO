@@ -99,9 +99,6 @@
 		self.hitPoint = nil;
 	} else {
 		if (self.controlPoint) {
-			if (!self.previousPoint) {
-				
-			}
 			[self addPointToPath:self.controlPoint.cgPoint pointType:CONTROL_POINT_TYPE];
 			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		} else {
