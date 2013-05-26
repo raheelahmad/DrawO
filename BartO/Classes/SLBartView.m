@@ -18,11 +18,10 @@
 @property (nonatomic, strong) NSMutableArray *paths;
 
 @property (nonatomic) CGPoint previousPoint;
-@property (nonatomic) CGPoint controlPoint;
+@property (nonatomic) SLPoint *controlPoint;
 @property (nonatomic) CGPoint movingPoint;
 @property (nonatomic) SLPoint *hitPoint;
 
-@property (nonatomic) BOOL addingControlPoint;
 @property (nonatomic) BOOL touchHeldDown;
 
 @property (nonatomic) CGContextRef context;
@@ -57,7 +56,7 @@
 }
 
 - (void)resetPathStates {
-	self.addingControlPoint = NO;
+	self.controlPoint = nil;
 	self.touchHeldDown = NO;
 	self.hitPoint = nil;
 	
@@ -98,8 +97,8 @@
 		self.hitPoint.touched = NO;
 		self.hitPoint = nil;
 	} else {
-		if (self.addingControlPoint) {
-			[self addPointToPath:self.controlPoint pointType:CONTROL_POINT_TYPE];
+		if (self.controlPoint) {
+			[self addPointToPath:self.controlPoint.cgPoint pointType:CONTROL_POINT_TYPE];
 			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
 		} else {
 			[self addPointToPath:point pointType:REGULAR_POINT_TYPE];
@@ -108,7 +107,7 @@
 	}
 	
 	self.touchHeldDown = NO;
-	self.addingControlPoint = NO;
+	self.controlPoint = nil;
 	
 	[self setNeedsDisplay];
 }
@@ -123,9 +122,8 @@
 	if (self.hitPoint) {
 		self.hitPoint.x = point.x;
 		self.hitPoint.y = point.y;
-	} else if (self.touchHeldDown && !self.addingControlPoint) {
-		self.controlPoint = point;
-		self.addingControlPoint = YES;
+	} else if (self.touchHeldDown && !self.controlPoint) {
+		self.controlPoint = [SLPoint pointWithCGPoint:point];
 	}
 	self.movingPoint = point;
 	
@@ -179,14 +177,14 @@
 		[path drawInContext:self.context];
 	}
 	
-	if (self.addingControlPoint) {
+	if (self.controlPoint) {
 		[[UIColor lightGrayColor] setStroke];
 		UIBezierPath *path = [UIBezierPath bezierPath];
 		CGFloat pattern[] = {4.0f, 2.0f};
 		[path setLineDash:pattern count:2 phase:2];
 		
 		[path moveToPoint:self.previousPoint];
-		[path addQuadCurveToPoint:self.movingPoint controlPoint:self.controlPoint];
+		[path addQuadCurveToPoint:self.movingPoint controlPoint:self.controlPoint.cgPoint];
 		[path stroke];
 	}
 }
