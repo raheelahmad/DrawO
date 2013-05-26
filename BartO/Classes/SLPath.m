@@ -68,14 +68,14 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	return hitPoint;
 }
 
-- (void)drawMarkerAtPoint:(SLPoint *)point context:(CGContextRef)context {
+- (void)drawMarkerAtPoint:(SLPoint *)point width:(CGFloat)width context:(CGContextRef)context {
 	if (point.touched) {
 		[[UIColor colorWithWhite:0.3f alpha:0.3f] setFill];
-		CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH, point.y - ELLIPSE_WIDTH, ELLIPSE_WIDTH * 2, ELLIPSE_WIDTH * 2));
+		CGContextFillEllipseInRect(context, CGRectMake(point.x - width, point.y - width, width * 2, width * 2));
 		
 	}
 	[UIColor colorWithWhite:0.7f alpha:0.7f];
-	CGContextFillEllipseInRect(context, CGRectMake(point.x - ELLIPSE_WIDTH/2, point.y - ELLIPSE_WIDTH/2, ELLIPSE_WIDTH, ELLIPSE_WIDTH));
+	CGContextFillEllipseInRect(context, CGRectMake(point.x - width/2, point.y - width/2, width, width));
 }
 
 - (void)drawInContext:(CGContextRef)context {
@@ -91,7 +91,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 		if (point.pointType == CONTROL_POINT_TYPE && index + 1 < self.points.count) {
 			SLPoint *previous = self.points[index - 1];
 			SLPoint *next = self.points[index + 1];
-			[self drawMarkerAtPoint:point context:context];
+			[self drawMarkerAtPoint:point width:ELLIPSE_WIDTH context:context];
 			[path moveToPoint:previous.cgPoint];
 			[path addLineToPoint:point.cgPoint];
 			[path addLineToPoint:next.cgPoint];
@@ -120,6 +120,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 			
 			[path addLineToPoint:point.cgPoint];
 		}
+		[self drawMarkerAtPoint:point width:ELLIPSE_WIDTH / 2 context:context];
 	}
 	[path stroke];
 }
