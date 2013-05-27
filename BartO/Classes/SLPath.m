@@ -10,10 +10,11 @@
 
 const NSUInteger MAX_POINTS = 100;
 const CGFloat MIN_DISTANCE_FOR_HIT = 20;
-const NSUInteger ELLIPSE_WIDTH = 8;
+const NSUInteger ELLIPSE_WIDTH = 16;
 
 @interface SLPath ()
 @property (nonatomic, strong) NSMutableArray *points;
+@property (nonatomic) BOOL showMarkers;
 @end
 
 @implementation SLPath
@@ -23,6 +24,10 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	CGFloat delta_y = p1.y - p2.y;
 	
 	return sqrtf(delta_x * delta_x + delta_y * delta_y);
+}
+
+- (void)toggleMarkers {
+	self.showMarkers = !self.showMarkers;
 }
 
 - (void)undo {
@@ -70,25 +75,25 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 
 - (void)drawMarkerAtPoint:(SLPoint *)point width:(CGFloat)width context:(CGContextRef)context {
 	if (point.touched) {
-		[[UIColor colorWithWhite:0.3f alpha:0.3f] setFill];
+		CGContextSaveGState(context);
+		[[UIColor colorWithWhite:0.3f alpha:0.6f] setFill];
 		CGContextFillEllipseInRect(context, CGRectMake(point.x - width, point.y - width, width * 2, width * 2));
-		
+		CGContextRestoreGState(context);
 	}
-	[UIColor colorWithWhite:0.7f alpha:0.7f];
+	[UIColor colorWithWhite:0.3f alpha:0.9f];
 	CGContextFillEllipseInRect(context, CGRectMake(point.x - width/2, point.y - width/2, width, width));
 }
 
-- (void)drawInContext:(CGContextRef)context {
-	if (self.points.count < 1) {
-		return; // nothing to draw
-	}
+- (void)drawMarkersInContext:(CGContextRef)context {
+	NSParameterAssert(self.points.count > 0);
 	
-	// draw the guide lines (for curve tangents) first, so they are below in z.
+	[self drawMarkerAtPoint:self.points[0] width:ELLIPSE_WIDTH/2 context:context];
+	
 	UIBezierPath *path = [UIBezierPath bezierPath];
 	path.lineWidth = 1.0f;
 	CGFloat pattern[] = {4.0f, 2.0f};
 	[path setLineDash:pattern count:2 phase:2];
-	[[UIColor lightGrayColor] setStroke];
+	[[UIColor colorWithWhite:0.4f alpha:0.8f] setStroke];
 	for (int index = 1; index < self.points.count; index++) {
 		SLPoint *point = self.points[index];
 		if (point.pointType == CONTROL_POINT_TYPE && index + 1 < self.points.count) {
@@ -99,13 +104,21 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 			[path addLineToPoint:point.cgPoint];
 			[path addLineToPoint:next.cgPoint];
 		}
+		[self drawMarkerAtPoint:point width:ELLIPSE_WIDTH / 2 context:context];
 	}
 	[path stroke];
 	
-	path = [UIBezierPath bezierPath];
+}
+
+- (void)drawInContext:(CGContextRef)context {
+	if (self.points.count < 1) {
+		return; // nothing to draw
+	}
+	
+	// Draw the path
+	UIBezierPath *path = [UIBezierPath bezierPath];
 	path.lineWidth = 2.0f;
 	[[UIColor darkGrayColor] setStroke];
-	// Draw the path
 	SLPoint *previous = self.points[0];
 	[path moveToPoint:previous.cgPoint];
 	for (int index = 1; index < self.points.count; index++) {
@@ -119,9 +132,14 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 		} else {
 			[path addLineToPoint:point.cgPoint];
 		}
-		[self drawMarkerAtPoint:point width:ELLIPSE_WIDTH / 2 context:context];
 	}
 	[path stroke];
+	
+	// draw the guide lines (for curve tangents)
+	if (self.showMarkers) {
+		[self drawMarkersInContext:context];
+	}
+	
 }
 
 - (void)printPoints {
@@ -134,6 +152,7 @@ CGFloat distanceBetweenPoints(CGPoint p1, CGPoint p2) {
 	self = [super init];
 	if (self) {
 		_points = [NSMutableArray arrayWithCapacity:10];
+		_showMarkers = YES;
 	}
 	return self;
 }

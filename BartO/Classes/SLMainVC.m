@@ -40,6 +40,9 @@
 	
 	UIButton *startNewButton = [self addButtonForImageName:@"new_path.png" origin:CGPointMake(140, 10)];
 	[startNewButton addTarget:bartView action:@selector(startNewPath) forControlEvents:UIControlEventTouchUpInside];
+	
+	UIButton *toggleMarkersButton = [self addButtonForImageName:@"toggle_marker.png" origin:CGPointMake(200, 10)];
+	[toggleMarkersButton addTarget:bartView action:@selector(toggleMarkers) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (UIButton *)addButtonForImageName:(NSString *)imageName origin:(CGPoint)origin {
@@ -54,7 +57,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning

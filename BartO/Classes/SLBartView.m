@@ -55,6 +55,11 @@
 	[self setNeedsDisplay];
 }
 
+- (void)toggleMarkers {
+	[self.paths makeObjectsPerformSelector:@selector(toggleMarkers)];
+	[self setNeedsDisplay];
+}
+
 - (void)resetPathStates {
 	self.controlPoint = nil;
 	self.touchHeldDown = NO;
@@ -164,8 +169,8 @@
 		self.context = UIGraphicsGetCurrentContext();
 	
 	//Background
-	CGContextSetRGBFillColor(self.context, 0.5f, 0.5f, 0.9f, 1.0f);
-	CGContextFillRect(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)));
+	UIImage *backgroundImage = [UIImage imageNamed:@"background.png"];
+	CGContextDrawImage(self.context, CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect)), backgroundImage.CGImage);
 	
 	[[UIColor colorWithWhite:0.7f alpha:0.7f] setFill];
 	for (SLPath *path in self.paths) {
