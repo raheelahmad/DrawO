@@ -158,10 +158,6 @@
 	return [touch locationInView:self];
 }
 
-- (void)printPoints {
-	[self.currentPath printPoints];
-}
-
 #pragma mark - Drawing
 
 - (void)drawRect:(CGRect)rect {

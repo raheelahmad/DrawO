@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5914682F174D57B40086B68C /* SLPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 5914682E174D57B40086B68C /* SLPath.m */; };
 		59146837174D9F280086B68C /* Todo.md in Resources */ = {isa = PBXBuildFile; fileRef = 59146836174D9F280086B68C /* Todo.md */; };
+		591B64931755B43D00786E66 /* SLPathController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591B64921755B43D00786E66 /* SLPathController.m */; };
 		591CE843174BF79C006DE283 /* SLPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 591CE842174BF79C006DE283 /* SLPoint.m */; };
 		592E7E851744AA5400CF6CEE /* iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E7F1744AA5400CF6CEE /* iPad@2x.png */; };
 		592E7E861744AA5400CF6CEE /*  AppStore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592E7E801744AA5400CF6CEE /*  AppStore@2x.png */; };
@@ -60,6 +61,8 @@
 		5914682D174D57B40086B68C /* SLPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPath.h; sourceTree = "<group>"; };
 		5914682E174D57B40086B68C /* SLPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPath.m; sourceTree = "<group>"; };
 		59146836174D9F280086B68C /* Todo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Todo.md; sourceTree = "<group>"; };
+		591B64911755B43D00786E66 /* SLPathController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPathController.h; sourceTree = "<group>"; };
+		591B64921755B43D00786E66 /* SLPathController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPathController.m; sourceTree = "<group>"; };
 		591CE841174BF79C006DE283 /* SLPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLPoint.h; sourceTree = "<group>"; };
 		591CE842174BF79C006DE283 /* SLPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLPoint.m; sourceTree = "<group>"; };
 		592E7E7F1744AA5400CF6CEE /* iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPad@2x.png"; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 				591CE842174BF79C006DE283 /* SLPoint.m */,
 				5914682D174D57B40086B68C /* SLPath.h */,
 				5914682E174D57B40086B68C /* SLPath.m */,
+				591B64911755B43D00786E66 /* SLPathController.h */,
+				591B64921755B43D00786E66 /* SLPathController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				598D4CB21742F6FF0014A28A /* SLBartView.m in Sources */,
 				591CE843174BF79C006DE283 /* SLPoint.m in Sources */,
 				5914682F174D57B40086B68C /* SLPath.m in Sources */,
+				591B64931755B43D00786E66 /* SLPathController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

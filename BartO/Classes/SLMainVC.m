@@ -10,10 +10,29 @@
 #import "SLBartView.h"
 
 @interface SLMainVC ()
-
+@property (nonatomic, strong) SLBartView *bartView;
 @end
 
 @implementation SLMainVC
+
+#pragma mark - Touches
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	
+}
+
+- (CGPoint)pointForTouches:(NSSet *)touches {
+	UITouch *touch = [[touches allObjects] lastObject];
+	return [touch locationInView:self.view];
+}
 
 #pragma - mark UIViewController
 
@@ -29,20 +48,20 @@
 - (void)loadView {
 	[super loadView];
 	
-	SLBartView *bartView = [[SLBartView alloc] initWithFrame:self.view.bounds];
-	[self.view addSubview:bartView];
+	self.bartView = [[SLBartView alloc] initWithFrame:self.view.bounds];
+	[self.view addSubview:self.bartView];
 	
 	UIButton *trashButton = [self addButtonForImageName:@"trash.png" origin:CGPointMake(20, 10)];
-	[trashButton addTarget:bartView action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
+	[trashButton addTarget:self.bartView action:@selector(clear) forControlEvents:UIControlEventTouchUpInside];
 	
 	UIButton *undoButton = [self addButtonForImageName:@"undo.png" origin:CGPointMake(80, 10)];
-	[undoButton addTarget:bartView action:@selector(undo) forControlEvents:UIControlEventTouchUpInside];
+	[undoButton addTarget:self.bartView action:@selector(undo) forControlEvents:UIControlEventTouchUpInside];
 	
 	UIButton *startNewButton = [self addButtonForImageName:@"new_path.png" origin:CGPointMake(140, 10)];
-	[startNewButton addTarget:bartView action:@selector(startNewPath) forControlEvents:UIControlEventTouchUpInside];
+	[startNewButton addTarget:self.bartView action:@selector(startNewPath) forControlEvents:UIControlEventTouchUpInside];
 	
 	UIButton *toggleMarkersButton = [self addButtonForImageName:@"toggle_marker.png" origin:CGPointMake(200, 10)];
-	[toggleMarkersButton addTarget:bartView action:@selector(toggleMarkers) forControlEvents:UIControlEventTouchUpInside];
+	[toggleMarkersButton addTarget:self.bartView action:@selector(toggleMarkers) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (UIButton *)addButtonForImageName:(NSString *)imageName origin:(CGPoint)origin {
@@ -52,17 +71,6 @@
 	button.frame = CGRectMake(origin.x, origin.y, image.size.width, image.size.height);
 	[self.view addSubview:button];
 	return button;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
