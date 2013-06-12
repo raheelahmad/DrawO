@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:BartO.xcodeproj">
+      location = "self:DrawO.xcodeproj">
    </FileRef>
 </Workspace>

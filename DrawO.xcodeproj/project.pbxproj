@@ -71,24 +71,24 @@
 		592E7E831744AA5400CF6CEE /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iPad.png; sourceTree = "<group>"; };
 		592E7E8B1744AA9800CF6CEE /* iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhone.png; path = ../iPhone.png; sourceTree = "<group>"; };
 		592E7E8D1744AAAB00CF6CEE /* iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone@2x.png"; path = "../iPhone@2x.png"; sourceTree = "<group>"; };
-		598D4C6C1742F4C20014A28A /* BartO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BartO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		598D4C6C1742F4C20014A28A /* DrawO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		598D4C6F1742F4C20014A28A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		598D4C711742F4C20014A28A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		598D4C731742F4C20014A28A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		598D4C751742F4C20014A28A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		598D4C791742F4C20014A28A /* BartO-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BartO-Info.plist"; sourceTree = "<group>"; };
+		598D4C791742F4C20014A28A /* DrawO-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DrawO-Info.plist"; sourceTree = "<group>"; };
 		598D4C7B1742F4C20014A28A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		598D4C7D1742F4C20014A28A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		598D4C7F1742F4C20014A28A /* BartO-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BartO-Prefix.pch"; sourceTree = "<group>"; };
+		598D4C7F1742F4C20014A28A /* DrawO-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DrawO-Prefix.pch"; sourceTree = "<group>"; };
 		598D4C801742F4C20014A28A /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
 		598D4C811742F4C20014A28A /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
 		598D4C831742F4C20014A28A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		598D4C851742F4C20014A28A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		598D4C871742F4C20014A28A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		598D4C8A1742F4C20014A28A /* BartO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BartO.xcdatamodel; sourceTree = "<group>"; };
-		598D4C911742F4C20014A28A /* BartOTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BartOTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		598D4C911742F4C20014A28A /* DrawOTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrawOTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		598D4C921742F4C20014A28A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		598D4C9B1742F4C20014A28A /* BartOTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BartOTests-Info.plist"; sourceTree = "<group>"; };
+		598D4C9B1742F4C20014A28A /* DrawOTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DrawOTests-Info.plist"; sourceTree = "<group>"; };
 		598D4C9D1742F4C20014A28A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		598D4C9F1742F4C20014A28A /* BartOTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BartOTests.h; sourceTree = "<group>"; };
 		598D4CA01742F4C20014A28A /* BartOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BartOTests.m; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		598D4C6D1742F4C20014A28A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				598D4C6C1742F4C20014A28A /* BartO.app */,
-				598D4C911742F4C20014A28A /* BartOTests.octest */,
+				598D4C6C1742F4C20014A28A /* DrawO.app */,
+				598D4C911742F4C20014A28A /* DrawOTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,10 +192,10 @@
 			children = (
 				59B274DB174C6C0B00F17C4A /* images */,
 				592E7E8A1744AA5B00CF6CEE /* icons */,
-				598D4C791742F4C20014A28A /* BartO-Info.plist */,
+				598D4C791742F4C20014A28A /* DrawO-Info.plist */,
 				598D4C7A1742F4C20014A28A /* InfoPlist.strings */,
 				598D4C7D1742F4C20014A28A /* main.m */,
-				598D4C7F1742F4C20014A28A /* BartO-Prefix.pch */,
+				598D4C7F1742F4C20014A28A /* DrawO-Prefix.pch */,
 				598D4C831742F4C20014A28A /* Default.png */,
 				598D4C851742F4C20014A28A /* Default@2x.png */,
 				598D4C871742F4C20014A28A /* Default-568h@2x.png */,
@@ -217,7 +217,7 @@
 		598D4C9A1742F4C20014A28A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				598D4C9B1742F4C20014A28A /* BartOTests-Info.plist */,
+				598D4C9B1742F4C20014A28A /* DrawOTests-Info.plist */,
 				598D4C9C1742F4C20014A28A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -269,9 +269,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		598D4C6B1742F4C20014A28A /* BartO */ = {
+		598D4C6B1742F4C20014A28A /* DrawO */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 598D4CA41742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartO" */;
+			buildConfigurationList = 598D4CA41742F4C20014A28A /* Build configuration list for PBXNativeTarget "DrawO" */;
 			buildPhases = (
 				598D4C681742F4C20014A28A /* Sources */,
 				598D4C691742F4C20014A28A /* Frameworks */,
@@ -281,14 +281,14 @@
 			);
 			dependencies = (
 			);
-			name = BartO;
+			name = DrawO;
 			productName = BartO;
-			productReference = 598D4C6C1742F4C20014A28A /* BartO.app */;
+			productReference = 598D4C6C1742F4C20014A28A /* DrawO.app */;
 			productType = "com.apple.product-type.application";
 		};
-		598D4C901742F4C20014A28A /* BartOTests */ = {
+		598D4C901742F4C20014A28A /* DrawOTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartOTests" */;
+			buildConfigurationList = 598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "DrawOTests" */;
 			buildPhases = (
 				598D4C8C1742F4C20014A28A /* Sources */,
 				598D4C8D1742F4C20014A28A /* Frameworks */,
@@ -300,9 +300,9 @@
 			dependencies = (
 				598D4C981742F4C20014A28A /* PBXTargetDependency */,
 			);
-			name = BartOTests;
+			name = DrawOTests;
 			productName = BartOTests;
-			productReference = 598D4C911742F4C20014A28A /* BartOTests.octest */;
+			productReference = 598D4C911742F4C20014A28A /* DrawOTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -315,7 +315,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Sakun Labs";
 			};
-			buildConfigurationList = 598D4C671742F4C20014A28A /* Build configuration list for PBXProject "BartO" */;
+			buildConfigurationList = 598D4C671742F4C20014A28A /* Build configuration list for PBXProject "DrawO" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -327,8 +327,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				598D4C6B1742F4C20014A28A /* BartO */,
-				598D4C901742F4C20014A28A /* BartOTests */,
+				598D4C6B1742F4C20014A28A /* DrawO */,
+				598D4C901742F4C20014A28A /* DrawOTests */,
 			);
 		};
 /* End PBXProject section */
@@ -416,7 +416,7 @@
 /* Begin PBXTargetDependency section */
 		598D4C981742F4C20014A28A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 598D4C6B1742F4C20014A28A /* BartO */;
+			target = 598D4C6B1742F4C20014A28A /* DrawO */;
 			targetProxy = 598D4C971742F4C20014A28A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -501,9 +501,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
-				INFOPLIST_FILE = "BartO/BartO-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BartO/DrawO-Prefix.pch";
+				INFOPLIST_FILE = "BartO/DrawO-Info.plist";
+				PRODUCT_NAME = DrawO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -512,9 +512,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
-				INFOPLIST_FILE = "BartO/BartO-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BartO/DrawO-Prefix.pch";
+				INFOPLIST_FILE = "BartO/DrawO-Info.plist";
+				PRODUCT_NAME = DrawO;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -529,8 +529,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
-				INFOPLIST_FILE = "BartOTests/BartOTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BartOTests/DrawOTests-Info.plist";
+				PRODUCT_NAME = DrawOTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -546,8 +546,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BartO/BartO-Prefix.pch";
-				INFOPLIST_FILE = "BartOTests/BartOTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BartOTests/DrawOTests-Info.plist";
+				PRODUCT_NAME = DrawOTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
@@ -556,7 +556,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		598D4C671742F4C20014A28A /* Build configuration list for PBXProject "BartO" */ = {
+		598D4C671742F4C20014A28A /* Build configuration list for PBXProject "DrawO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				598D4CA21742F4C20014A28A /* Debug */,
@@ -565,7 +565,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		598D4CA41742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartO" */ = {
+		598D4CA41742F4C20014A28A /* Build configuration list for PBXNativeTarget "DrawO" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				598D4CA51742F4C20014A28A /* Debug */,
@@ -574,7 +574,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "BartOTests" */ = {
+		598D4CA71742F4C20014A28A /* Build configuration list for PBXNativeTarget "DrawOTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				598D4CA81742F4C20014A28A /* Debug */,

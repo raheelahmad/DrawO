@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "598D4C6B1742F4C20014A28A"
                BuildableName = "BartO.app"
-               BlueprintName = "BartO"
-               ReferencedContainer = "container:BartO.xcodeproj">
+               BlueprintName = "DrawO"
+               ReferencedContainer = "container:DrawO.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "598D4C901742F4C20014A28A"
                BuildableName = "BartOTests.octest"
-               BlueprintName = "BartOTests"
-               ReferencedContainer = "container:BartO.xcodeproj">
+               BlueprintName = "DrawOTests"
+               ReferencedContainer = "container:DrawO.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "598D4C6B1742F4C20014A28A"
             BuildableName = "BartO.app"
-            BlueprintName = "BartO"
-            ReferencedContainer = "container:BartO.xcodeproj">
+            BlueprintName = "DrawO"
+            ReferencedContainer = "container:DrawO.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "598D4C6B1742F4C20014A28A"
             BuildableName = "BartO.app"
-            BlueprintName = "BartO"
-            ReferencedContainer = "container:BartO.xcodeproj">
+            BlueprintName = "DrawO"
+            ReferencedContainer = "container:DrawO.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "598D4C6B1742F4C20014A28A"
             BuildableName = "BartO.app"
-            BlueprintName = "BartO"
-            ReferencedContainer = "container:BartO.xcodeproj">
+            BlueprintName = "DrawO"
+            ReferencedContainer = "container:DrawO.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
